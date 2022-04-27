@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}
+see questions and answers
+{% endblock title %}
+ 
+
+
+{% block body %}
+ <!-- <h3 class="text-center"><span> Details</span> </h3> -->
+  
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<br>
+
+{% for post in teach %}
+<form action="/answer" method="POST">
+<div class="form-group">
+  <label for="author" style="font-size:15px;"> Asked by <i> {{post.author}}</i></label>
+</div>
+
+<div class="form-group">
+  <label for="author" style="font-size:15px;"> Created at :</label>
+  <label for="author" style="font-size:15px;"> {{post.created_at}}</label>
+</div>   
+
+<div style = "position:relative; left:80px; top:2px; background-color:yellow;"></div>
+  <label for="author"><b> {{post.id}}.{{post.question}}</b></label>
+  </div>
+  
+
+<div class="form-group">
+  <label for="author"> Answer : </label>
+  <label for="author"> {{post.body}}</label>
+
+  <textarea hidden class="form-control" name="user" id="user" placeholder="name" style="color:blue";>{{current_user.username}}</textarea>
+  <input type="text" class="form-control" name="body" id="body" placeholder="your answer" style="color:blue"></input>
+
+  <input  type="hidden" class="form-control" name="question_no" id="question_no" value="{{post.id}}"></input>
+  <input type="text" hidden class="form-control" name="created_at" id="created_at"></input>
+  <!-- <textarea hidden class="form-control" name="updated_at" id="updated_at"  style="color:blue";></textarea> -->
+
+  
+</div>
+  
+<!-- <div class="form-group">  
+  <label for="updated at">Updated at :</label>
+  <label for="updated at">{{post.updated_at}}</label>
+</div>
+<br> -->
+      
+<button type="submit" class="btn btn-danger btn-sm btn-block" value="question_no">Save</button></form> 
+<br>
+{% endfor %}
+
+
+
+
+{% endblock body %}

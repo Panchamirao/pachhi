@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}
+                 Students
+{% endblock title %}
+
+
+
+{% block body %}
+ <h2 class="text-center"><span>Hello  {{current_user.username}}
+
+ </span> </h2>
+  
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+
+</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+<br>
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4"></div>
+<div class="col-md-5 teacher">
+
+<form action="/student" method="post">
+<div class="form-group">
+
+<label for="rollno">User id : {{current_user.id}}</label>
+</div>
+<br>
+
+<div class="form-group">
+
+<label for="sname">User Name : {{current_user.username}}</label>
+</div>
+<br>
+
+<div class="form-group">
+
+<label for="email">Email : {{current_user.email}} </label>
+</div>
+<br>
+
+
+  <a href="/ask">Ask question</a>
+  <a href="/displayq">See other questions</a>
+
+  <!-- <button type="submit" class="btn btn-danger btn-sm btn-block">Edit Details</button>
+  <button type="submit" class="btn btn-danger btn-sm btn-block">Show event</button> -->
+</form>
+<br>
+<br>
+
+</div>
+
+<div class="col-md-4"></div>
+
+</div></div>
+
+
+
+{% endblock body %}

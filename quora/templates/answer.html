@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block title %}
+Add question
+{% endblock title %}
+
+
+
+{% block body %}
+ <h3 class="text-center bg-danger text-white"><span>Write your answer</span> </h3>
+  
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+
+</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+<br>
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-2"></div>
+<div class="col-md-6">
+
+<form action="/" method="get">
+
+
+<div class="form-group">
+<label for="author">name:</label>
+<input type="text" class="form-control" name="user" id="user">
+</div>
+<br>
+
+<div class="form-group">
+<label for="question">title:</label>
+<input type="text" class="form-control" name="question" id="question">
+</div>
+<br>
+
+<div class="form-group">
+<label for="body">Body:</label>
+<input type="text" class="form-control" name="body" id="body">
+</div>
+<br>
+
+<!-- <div class="form-group">                          
+  <select  class="form-control" id="etype" name="etype"  required>
+
+          <option selected>title</option>
+          {% for post in event %}
+          <option value="{{post.id}}">{{post.ename}}</option>
+          {% endfor %}
+        </select>
+   </div>
+  <br> -->
+
+  <div class="form-group">
+    <label for="created_at">created at</label>
+    <input type="datetime" class="form-control" name="created_at" id="created_at">
+    </div>
+    <br>
+
+  <div class="form-group">
+    <label for="updated_at">updated at</label>
+    <input type="datetime" class="form-control" name="updated_at" id="updated_at">
+    </div>
+    <br>   
+
+     <!-- <div class="form-group">
+      <label for="dept">Place </label>
+      <input type="text" class="form-control" name="place" id="place">
+      </div>
+      <br> -->
+
+      <!-- <div class="form-group">
+        <label for="dept"> Last date to register</label>
+        <input type="date" class="form-control" name="ldate" id="ldate">
+        </div>
+        <br> -->
+       
+        <!-- <div class="form-group">
+          <input type="hidden" class="form-control" name="uname" id="uname" value="{{current_user.username}}">
+          </div> -->
+          <br>
+  <button type="submit" class="btn btn-danger btn-sm btn-block">Submit</button>
+</form>
+<br> 
+
+  <br>
+
+<br>
+
+</div>
+
+<div class="col-md-4"></div>
+
+</div></div>
+{% endblock body %} 
